@@ -1,16 +1,28 @@
 // Compilar: g++ kernel.cpp
 
-void print(char* str) {
-    char *video = (char*)0xB8000;
-    const char *msg = "Hello world!";
-    for (int i = 0; msg[1] != 0; i++) {
-        video[i * 2] = msg[i];
+
+#define VIDEO_MEMORY 0xB8000
+#define WIDTH 80
+#define HEIGHT 25
+
+void clear() {
+    char *video = (char *)VIDEO_MEMORY;
+    for (int i = 0; i < WIDTH * HEIGHT; i++) {
+        video[i * 2] = ' ';
         video[i * 2 + 1] = 0x0F;
     }
-    while (1) {}
+}
+
+void print(const char *str, int row) {
+    char *video = (char *)VIDEO_MEMORY + row * WIDTH * 2;
+    for (int i = 0; str[i] != 0 && i < WIDTH; i++) {
+        video[i * 2] = str[i];
+        video[i * 2 + 1] = 0x0F;
+    }
 }
 
 void kmain(void) {
-    print("Hello, World!");
-    while (1);
+    clear();
+    print("Hello, World!", 0);
+    while (1) {};
 }
