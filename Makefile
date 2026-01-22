@@ -1,4 +1,4 @@
-TARGET=terminal-root-os.bin
+TARGET=simplinho-os.bin
 
 GNU=as
 CXX=gcc
