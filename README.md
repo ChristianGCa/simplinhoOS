@@ -2,6 +2,8 @@
 
 Este é um projeto educacional de um kernel básico escrito em C e Assembly para arquitetura x86.
 
+![os-execution](img/img.png)
+
 ## Recursos
 
 - Boot em modo protegido compatível com Multiboot (pode ser iniciado pelo GRUB ou QEMU)
